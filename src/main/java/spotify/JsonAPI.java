@@ -15,14 +15,14 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public interface JsonAPI {
-    String accessTocken ="BQDFvYhpFcpHohuyTpdQoAV__9zNxTfRmae24ZLUng-I-HC3t87ZrdhyHUfOloNgv_hWIhyBG2p_8VjGt02p0u_J_vmwfOkzG-ywaiJTC43Z08i8m12viXsl4fCio4cYAoyO2_8V_ufCuiQOrpI-vqqqS3H9aIsXWwhEcHwWZgbvuWNocvg";
+    String accessTocken ="BQCwc_cWND55UDFlX0jEqT4UrEixyhhXhJbUjDRq_jz4Xpv__Faud";
     @Headers({"Accept: application/json",
             "Content-Type: application/json",
             "Authorization: Bearer " + accessTocken,
 
             })
     @GET("/v1/search?type=track" )
-    Observable<TracksList> getTracksList(@Query("q") String songtitle);
+    Observable<SpotifySearchResponse> getSpotifySearchResponse(@Query("q") String songtitle);
 
 //    @GET("audio-features/"id)
 //    Observable<AudioList> getAudioList();

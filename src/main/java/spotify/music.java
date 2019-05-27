@@ -12,24 +12,39 @@ import java.util.Objects;
 
 public class music extends JFrame{
     private String songTitle;
-    String songTitleRewritten;
-    TracksList TracksList;
-    public void rewriteSongTitle(){
-        songTitleRewritten = songTitle.replaceAll("\\s+", "%20");
+    //String songTitleRewritten;
+    SpotifySearchResponse spotifyResponse;
+    String songId;
+   // public void rewriteSongTitle(){
+   //     songTitleRewritten = songTitle.replaceAll("\\s+", "%20");
+   // }
+    public void getSongId(){
+        boolean flag = false;
+        int i = 0;
+        while ( i < spotifyResponse.getTracks().getItems().size() && flag == true){
+            if (spotifyResponse.getTracks().getItems().get(i).getName().toLowerCase()== songTitle.toLowerCase()&&
+                    spotifyResponse.getTracks().getItems().get(i).getType()=="track"){
+                songId =spotifyResponse.getTracks().getItems().get(i).getId();
+                flag = true;
+            }
+            i++;
+
+        }
     }
+
 
     public void searchForSong(){
         JsonClient client = new JsonClient();
-        Disposable disposable = client.getTracksList(songTitle)
+        Disposable disposable = client.getSpotifySearchResponse(songTitle)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.trampoline())
-                .subscribe(new Consumer<TracksList>() {
+                .subscribe(new Consumer<SpotifySearchResponse>() {
                     @Override
-                    public void accept(TracksList tracks) throws Exception {
-
-                        TracksList = tracks;
-
+                    public void accept(SpotifySearchResponse spotifySearchResponse) throws Exception {
+                        spotifyResponse = spotifySearchResponse;
                     }
+
+
                 });
     }
     public music (){

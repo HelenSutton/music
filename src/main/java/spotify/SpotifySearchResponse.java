@@ -14,6 +14,8 @@ public class SpotifySearchResponse {
         return tracks;
     }
 
+
+
     public void setTracks(Tracks tracks) {
         this.tracks = tracks;
     }
