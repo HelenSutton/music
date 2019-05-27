@@ -50,7 +50,7 @@ public class music extends JFrame{
         search.add(searchButton);
         searchButton.addActionListener(e->{
             songTitle = searchSong.getText();
-            rewriteSongTitle();
+
             searchForSong();
 
 

@@ -3,10 +3,8 @@ package spotify;
 
 import com.google.gson.Gson;
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 import java.io.BufferedReader;
@@ -23,7 +21,7 @@ public interface JsonAPI {
             "Authorization: Bearer " + accessTocken,
 
             })
-    @GET ("/v1/search?type=track" )
+    @GET("/v1/search?type=track" )
     Observable<TracksList> getTracksList(@Query("q") String songtitle);
 
 //    @GET("audio-features/"id)
