@@ -16,5 +16,5 @@ public class JsonClient {
        api = retrofit.create(JsonAPI.class);
     }
     Observable<SpotifySearchResponse> getSpotifySearchResponse(String songtitle){
-        return api.getSpotifySearchResponse(songtitle);
+        return api.getSpotifySearchResponse(songtitle, "track");
     }}
