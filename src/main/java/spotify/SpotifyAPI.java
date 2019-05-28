@@ -15,21 +15,18 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-public interface JsonAPI {
-    String accessTocken1 ="BQDg1zSpswBd4V1vsv5DWA_NPBFvnLfEhXSHDOJLrAFFXpDHaRCIG5wTB1ktT2RstCdbGrveCpI0-yW1DTqDj9Pz3CfEA7y-joShrCQ8PtJ5lbs5S0Rpce8voR7hYKRwDB4dCn6q2sfsnLH1IjXBNRNAOX_wF8uvswJyw9pZKxwBu4SB5_4";
-    String accessTocken2 = "BQCpZBsOf6xLXsrE-f3wLFA4zTZqVWpyQCdbFsq8LUn2XsaK-zMeI2mDk4lj0dupnHzX9u4L_13OfsIU93iqIzFlWNDm-xsumGQfu7vj3O1Fe_yfKUqtUirBoB7fLLGd4dhlHiiS2AxS07MSDEtXaqtAfYj8quQdeRc0X3b3Bs-8GcgPghI";
+public interface SpotifyAPI {
+    String accessTocken1 ="BQBDAKArqEnyuGp7UzUNDe7HWsyG_fIZOES52db3dpGYn6BSRwXQ6wmj__DNzatNYjrcL9hVDI3VxpBSVrjO_ShR7qMfSNWO2rVp058yiIO91yEfMq4mN944qbpOcgCEnCNt3sQAuMeAyInNXNG2uM2xhDxsgjrkzvpn7_8CYjrr_D_F4gA";
     @Headers({"Accept: application/json",
             "Content-Type: application/json",
             "Authorization: Bearer " + accessTocken1,
-
             })
     @GET("/v1/search?" )
     Observable<SpotifySearchResponse> getSpotifySearchResponse(@Query("q") String songtitle, @Query ("type")  String type);
 
     @Headers({"Accept: application/json",
             "Content-Type: application/json",
-            "Authorization: Bearer " + accessTocken2,
-
+            "Authorization: Bearer " + accessTocken1,
     })
     @GET("/v1/audio-features/{id}")
    Observable<Audio> getAudio(@Path("id") String songId);
