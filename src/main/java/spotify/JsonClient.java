@@ -17,4 +17,7 @@ public class JsonClient {
     }
     Observable<SpotifySearchResponse> getSpotifySearchResponse(String songtitle){
         return api.getSpotifySearchResponse(songtitle, "track");
+    }
+    Observable<Audio> getAudio(String songId) {
+        return api.getAudio(songId);
     }}
