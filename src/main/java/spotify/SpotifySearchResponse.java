@@ -14,7 +14,9 @@ public class SpotifySearchResponse {
         return tracks;
     }
 
-
+    public String getFirstSongId() {
+        return tracks.getItems().get(1).getId();
+    }
 
     public void setTracks(Tracks tracks) {
         this.tracks = tracks;
