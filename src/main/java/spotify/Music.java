@@ -15,34 +15,12 @@ import java.util.Objects;
 public class Music extends JFrame{
     MusicComponent musicComponent = new MusicComponent();
     SpotifyClient client = new SpotifyClient();
-    JTextArea textArea = new JTextArea();
     JPanel root = new JPanel();
-    String[] pitch ={"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
 
     DecimalFormat df = new DecimalFormat("###.##");
 
     public void displayFeatures(Audio songAudio){
         musicComponent.setAudio(songAudio);
-        String dance = "dancebility: "+df.format(songAudio.getDanceability()*100)+"%\n";
-        String energy = "energy: " + df.format(songAudio.getEnergy()*100)+"%\n";
-        String valence = "this track is " +df.format(songAudio.getValence()*100)+"% positive\n";
-        String liveness = "this track has a " +df.format(songAudio.getLiveness()*100)+"% chance of being live\n";
-        String tempo = df.format(songAudio.getTempo())+" BPM \n";
-        String mode= "the key is " + pitch[songAudio.getKey()]+" ";
-        int fullMilliseconds = songAudio.getDurationMs();
-        int milliseconds = fullMilliseconds%1000;
-        int seconds = fullMilliseconds/1000;
-        int minutes = seconds/60;
-        seconds = seconds%60;
-        String time = "time: "+ minutes +" minutes "+ seconds + " seconds "+ milliseconds+" milliseconds\n";
-        if (songAudio.getMode()==1){
-            mode += "major\n";
-        }
-        else{
-            mode+= "minor\n";
-        }
-        String fulltext = time + mode + dance + energy + valence + liveness + tempo;
-        textArea.setText(fulltext);
     }
 
     public void searchForSong(String songTitle){
@@ -53,8 +31,6 @@ public class Music extends JFrame{
                 .observeOn(Schedulers.trampoline())
                 .subscribe(this::displayFeatures);
     }
-
-
 
     public Music (){
         setTitle("Music");
@@ -77,22 +53,8 @@ public class Music extends JFrame{
             searchForSong(songTitle);
         });
 
-        textArea.setMinimumSize(new Dimension(400, 700));
-        textArea.setPreferredSize(new Dimension(400, 700));
-        textArea.setMaximumSize(new Dimension(400, 700));
-        textArea.setWrapStyleWord(true);
-        textArea.setLineWrap(true);
-        textArea.setOpaque(false);
-        textArea.setEditable(false);
-        textArea.setFocusable(false);
-        textArea.setBackground(UIManager.getColor("Label.background"));
-        textArea.setFont(UIManager.getFont("Label.font"));
-        textArea.setBorder(UIManager.getBorder("Label.border"));
-
-
-        root.add(musicComponent, BorderLayout.CENTER);
+root.add(musicComponent, BorderLayout.CENTER);
         root.add(search, BorderLayout.NORTH);
-        root.add(textArea, BorderLayout.EAST);
         setContentPane(root);
 
     }

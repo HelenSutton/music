@@ -8,7 +8,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface SpotifyAPI {
-    String accessToken ="BQB-6hjcQd8d417oifEaMTIL5Mk6tZGtu2YpKdRLFUvb800NYv05qqDwIaBGTSvYVVb56mNxiaY8gNMMXRIPEwO5B2r1BlI7mC9fXqoYyP7raMu-Ln6cMG26RLqLWh6GWGxhuDc_cxQrGBNU2sKXEW08eYCCMNH4RgvOsc3wSZIzMJMAzDw";
+    String accessToken ="BQCYRmYXRUTTs5PwRzvA2hvtdEHuX7RYTxLFui2FcbzM1qPyq0bKoRK4yDsOuvF_hKtln-cQW4U3HwKGJErQNF88ydkNu42tYey9lu82K-xLSBiVuP8Mc3gb0tbTi_XePN-AmYWcuxOFTl5ExCxQ3r001F0gcx8-Wlcg19skcWrIc3vTotI";
     @Headers({"Accept: application/json",
             "Content-Type: application/json",
             "Authorization: Bearer " + accessToken,
