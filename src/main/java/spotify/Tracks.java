@@ -12,7 +12,7 @@ public class Tracks {
     private String href;
     @SerializedName("items")
     @Expose
-    private List<Item> items = null;
+    private List<Item> items;
 
     public String getHref() {
         return href;
